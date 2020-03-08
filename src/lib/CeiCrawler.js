@@ -83,7 +83,9 @@ class CeiCrawler {
      */
     async getStockHistory(startDate, endDate) {
         await this._login();
-        return await StockHistoryCrawler.getStockHistory(this._page, this.options, startDate, endDate);
+        let stockHistory = await StockHistoryCrawler.getStockHistory(this._page, this.options, startDate, endDate);
+        this._browser.close();
+        return stockHistory; 
     }
 
 }
